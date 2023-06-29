@@ -1,0 +1,103 @@
+﻿<head>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <title>Filtrar productos</title>
+    <style>
+        .filter-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+            .filter-container label {
+                margin-bottom: 10px;
+            }
+
+        .range-input-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+            .range-input-container input {
+                margin-right: 5px;
+            }
+    </style>
+</head>
+<body>
+
+
+    <div style="width: 300px; height: 80px; border: 1px solid #ccc; padding: 10px;">
+        <input type="text" id="campoCiudad" placeholder="Ingrese la ciudad">
+        <button onclick="GestionPropiedades.GetAllPropiedadesByCiudad();">Buscar</button>
+    </div>
+
+    <div class="container">
+        <div class="row">
+
+            <div hidden id="lateralFiltros" class="col-md-6">
+                <h1>Filtrar productos</h1>
+
+                <div class="filter-container">
+                    <label for="city">Barrio:</label>
+                    <input type="text" id="barrio">
+
+                    <label for="price-range">Rango de precios:</label>
+                    <div class="range-input-container">
+                        <input type="number" id="precioMin" placeholder="Mínimo">
+                        -
+                        <input type="number" id="precioMax" placeholder="Máximo">
+                    </div>
+
+                    <label for="size-range">Rango de tamaño:</label>
+                    <div class="range-input-container">
+                        <input type="number" id="superficieMin" placeholder="Mínimo">
+                        -
+                        <input type="number" id="superficieMax" placeholder="Máximo">
+                    </div>
+
+                    <label for="categoria">Categoría:</label>
+                    <select id="categoria">
+                        <option value="" selected>Seleccione</option>
+                    </select>
+
+                    <label for="tipo">Tipo:</label>
+                    <select id="tipo">
+                        <option value="">Todos</option>
+                        <option value="tipo1">Tipo 1</option>
+                        <option value="tipo2">Tipo 2</option>
+                        <option value="tipo3">Tipo 3</option>
+                    </select>
+
+                    <button onclick="GestionPropiedades.GetPropiedadesFiltradas();">Filtrar</button>
+                    <button onclick="GestionPropiedades.ResetearFiltros();">Resetear filtros</button>
+
+                    @*    <button id="consumirApi">Consultar Datos Api</button>
+                    <button id="consultarXCiudad" onclick="GestionPropiedades.GetAllPropiedadesByCiudad();">Ciudades</button>*@
+                </div>
+             
+
+            </div>
+           <div hidden class="cod-md-6">
+                <p>Mapa de propiedades</p>
+                <div id="map"></div>
+           </div>
+        </div>
+        <div class="col-md-6" id="propiedadesContainer">
+        </div>
+           
+    </div>
+
+
+    <script src="~/js/Request.js"></script>
+    <script src="~/js/GestionPropiedades.js"></script>
+    <script src="~/js/GestionCategorias.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsClAV0TIKnaNWOL97pwUVqPtDELVFfuA&callback=initMap" async defer></script>
+    <script src="~/js/site.js"></script>
+
+
+    @*    <script>
+
+  
+    </script>*@
+</body>

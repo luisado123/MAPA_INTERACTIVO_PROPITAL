@@ -1,0 +1,93 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<title>Visualización de Proyectos Inmobiliarios</title>
+<style>
+    #map {
+        height: 400px; /* Ajusta la altura del mapa según tus necesidades */
+        width: 100%; /* Ajusta el ancho del mapa según tus necesidades */
+    }
+</style>
+<div id="lateralFiltros" class="d-flex">
+    <div style="width: 300px; height: 80px; border: 1px solid #ccc; padding: 10px;">
+        <input type="text" id="campoCiudad" placeholder="Ingrese la ciudad">
+        <button onclick="GestionPropiedades.GetAllPropiedadesByCiudad();">Buscar</button>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="formBarrio">Barrio:</label>
+                <input type="text" id="formBarrio" class="form-control" />
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="formPrecioMin">Precio mínimo:</label>
+                <input type="number" id="formPrecioMin" class="form-control" placeholder="Mínimo" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="formPrecioMax">Precio máximo:</label>
+                <input type="number" id="formPrecioMax" class="form-control" placeholder="Máximo" />
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="formSuperficieMin">Superficie mínima:</label>
+                <input type="number" id="formSuperficieMin" class="form-control" placeholder="Mínimo" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="formSuperficieMax"> máxima:</label>
+                <input type="number" id="formSuperficieMax" class="form-control" placeholder="Máximo" />
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-outline">
+                <label for="formCategoria">Categoría:</label>
+                <select id="formCategoria"  class="form-control">
+                    <option value="" selected>Seleccione</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col text-end">
+            <div class="buttons-container btn-group justify-content-end">
+                <button onclick="GestionPropiedades.GetPropiedadesFiltradas();" class="btn btn-primary">Filtrar</button>
+                <button onclick="GestionPropiedades.ResetearFiltros();" class="btn btn-secondary">Resetear filtros</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 " style="width: 100%; height: 400px;">
+            <h1>Mapa de Proyectos Inmobiliarios</h1>
+            <div id="map"></div>
+        </div>
+        <div class="col-md-6">
+            <h1>Propiedades en esta Zona</h1>
+            <div id="propiedadesContainer">
+            </div>
+        </div>
+    </div>
+</div>
+
